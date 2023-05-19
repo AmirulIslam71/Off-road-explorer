@@ -22,7 +22,7 @@ const SearchOptions = () => {
 
   return (
     <div className="flex items-center justify-center">
-      <div className="w-64 mx-auto ">
+      <div className="lg:w-64 w-28 mx-auto ">
         <form onSubmit={handleSearchSubmit} className="flex">
           <select
             value={selectedCategory}
@@ -39,7 +39,7 @@ const SearchOptions = () => {
             value={searchQuery}
             onChange={handleSearchChange}
             placeholder="Enter your keyword"
-            className=" flex-1 appearance-none bg-white border border-gray-400 text-gray-700 py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            className=" flex-1 appearance-none bg-white border border-gray-400 text-gray-700 lg:py-2 lg:px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           />
           <button
             type="submit"

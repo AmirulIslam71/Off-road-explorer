@@ -23,7 +23,7 @@ const NavbarMenu = () => {
           };
         }}
       >
-        All Toys
+        AllToys
       </NavLink>
       <NavLink
         to="/myToys"
@@ -34,7 +34,7 @@ const NavbarMenu = () => {
           };
         }}
       >
-        My Toys
+        MyToys
       </NavLink>
       <NavLink
         to="/addToys"
@@ -45,7 +45,7 @@ const NavbarMenu = () => {
           };
         }}
       >
-        Add Toys
+        AddToys
       </NavLink>
       <NavLink
         to="/blogs"

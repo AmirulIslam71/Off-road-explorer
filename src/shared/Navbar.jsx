@@ -29,7 +29,7 @@ const Navbar = () => {
             <NavbarMenu></NavbarMenu>
           </ul>
         </div>
-        <a className="btn btn-ghost lg:text-2xl uppercase font-serif text-amber-600">
+        <a className="btn btn-ghost lg:text-2xl lg:uppercase lg:font-serif text-amber-600">
           Off Road Explorer
         </a>
       </div>
@@ -39,7 +39,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <div className="bg-amber-600 divide-x-4 px-5 rounded-lg space-x-5">
+        <div className="bg-amber-600 divide-x-4 lg:px-5 md:px-2 rounded-lg lg:space-x-5">
           <NavLink
             to="/login"
             style={({ isActive, isPending }) => {
@@ -52,7 +52,7 @@ const Navbar = () => {
             Login
           </NavLink>
           <NavLink
-            className="pl-3"
+            className="lg:pl-3"
             to="/register"
             style={({ isActive, isPending }) => {
               return {
@@ -64,7 +64,7 @@ const Navbar = () => {
             Register
           </NavLink>
         </div>
-        <div className="pl-4 flex">
+        <div className="lg:pl-4 flex">
           <div className="avatar online">
             <div className="w-7 rounded-full">
               <img src="https://i.ibb.co/XYqXdQc/avator.jpg" />

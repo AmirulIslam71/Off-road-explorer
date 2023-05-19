@@ -7,11 +7,11 @@ const Header = () => {
   return (
     <div className="">
       <Navbar></Navbar>
-      <div className="bg-gray-800 h-24">
-        <div className="flex justify-between container mx-auto p-3">
+      <div className="bg-gray-800 lg:h-24 h-44">
+        <div className="lg:flex justify-between container mx-auto p-3">
           <div>
             <img
-              className="h-16"
+              className="lg:h-16 h-7"
               src="https://cdn.cdnlogo.com/logos/f/61/ford-4x4-off-road.svg"
               alt="Logo"
             />
@@ -20,7 +20,7 @@ const Header = () => {
             <SearchOptions></SearchOptions>
           </div>
           <div className="text-white">
-            <div className="flex items-center ">
+            <div className="flex items-center">
               <FontAwesomeIcon
                 className="text-amber-700 text-6xl pr-4"
                 icon={faHeadphonesSimple}
