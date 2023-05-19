@@ -3,6 +3,7 @@
     "title": "Sports Cars",
     "toys": [
       {
+        "id": 1,
         "picture": "https://i.ibb.co/93P2XQm/red.jpg",
         "name": "Super Speedster",
         "price": "$29.99",
@@ -12,6 +13,7 @@
         "details": "A sleek and fast sports car toy."
       },
       {
+        "id": 2,
         "picture": "https://i.ibb.co/1q1CX9p/blue.jpg",
         "name": "Racing Champion",
         "price": "$24.99",
@@ -21,6 +23,7 @@
         "details": "Perfect for high-speed races on the track."
       },
       {
+        "id": 3,
         "picture": "https://i.ibb.co/bdhtHV9/yellow.jpg",
         "name": "Turbo Racer",
         "price": "$26.99",
@@ -30,6 +33,7 @@
         "details": "Unleash the power of this turbocharged sports car."
       },
       {
+        "id": 4,
         "picture": "https://i.ibb.co/gJBrqwL/silve.jpg",
         "name": "Convertible Cruiser",
         "price": "$31.99",
@@ -39,6 +43,7 @@
         "details": "A stylish and sleek convertible sports car toy."
       },
       {
+        "id": 5,
         "picture": "https://i.ibb.co/Jtv90fg/green.jpg",
         "name": "Off-road Raptor",
         "price": "$34.99",
@@ -53,6 +58,7 @@
     "title": "Trucks",
     "toys": [
       {
+        "id": 6,
         "picture": "https://i.ibb.co/njkm78F/yellow2.jpg",
         "name": "Monster Truck",
         "price": "$19.99",
@@ -62,6 +68,7 @@
         "details": "An awesome monster truck toy with big wheels."
       },
       {
+        "id": 7,
         "picture": "https://i.ibb.co/YPXfKH4/green.jpg",
         "name": "Dump Truck",
         "price": "$16.99",
@@ -71,6 +78,7 @@
         "details": "Perfect for transporting and unloading small objects."
       },
       {
+        "id": 8,
         "picture": "https://i.ibb.co/svg0ZDS/yellow.jpg",
         "name": "Construction Crew",
         "price": "$22.99",
@@ -80,6 +88,7 @@
         "details": "Build and demolish with this construction truck toy set."
       },
       {
+        "id": 9,
         "picture": "https://i.ibb.co/R6Jtm1h/green2.jpg",
         "name": "Tow Truck Hero",
         "price": "$26.99",
@@ -89,6 +98,7 @@
         "details": "Come to the rescue with this reliable tow truck toy."
       },
       {
+        "id": 10,
         "picture": "https://i.ibb.co/d7hz4YN/orange.jpg",
         "name": "Dump Truck Delight",
         "price": "$19.99",
@@ -103,6 +113,7 @@
     "title": "Regular Cars",
     "toys": [
       {
+        "id": 11,
         "picture": "https://i.ibb.co/C19pJRx/silver.jpg",
         "name": "Family Sedan",
         "price": "$14.99",
@@ -112,6 +123,7 @@
         "details": "A classic toy car for everyday play."
       },
       {
+        "id": 12,
         "picture": "https://i.ibb.co/6tYvQv9/black.jpg",
         "name": "City Cruiser",
         "price": "$12.99",
@@ -121,6 +133,7 @@
         "details": "Ideal for city adventures and pretend drives."
       },
       {
+        "id": 13,
         "picture": "https://i.ibb.co/pxkBF6R/blue.jpg",
         "name": "Convertible Joyride",
         "price": "$17.99",
@@ -130,6 +143,7 @@
         "details": "Experience the thrill of a convertible ride with this toy car."
       },
       {
+        "id": 14,
         "picture": "https://i.ibb.co/fp4BJvw/red.jpg",
         "name": "Retro Roadster",
         "price": "$19.99",
@@ -139,6 +153,7 @@
         "details": "A vintage-inspired toy car for nostalgic adventures."
       },
       {
+        "id": 15,
         "picture": "https://i.ibb.co/DpG4dhf/green.jpg",
         "name": "SUV Explorer",
         "price": "$21.99",
@@ -153,6 +168,7 @@
     "title": "Mini Fire Trucks",
     "toys": [
       {
+        "id": 16,
         "picture": "https://i.ibb.co/3r9ZKXs/red.jpg",
         "name": "Fire Brigade Hero",
         "price": "$18.99",
@@ -162,6 +178,7 @@
         "details": "A small fire truck toy with lights and sounds."
       },
       {
+        "id": 17,
         "picture": "https://i.ibb.co/ydcjb7W/orange.jpg",
         "name": "Rescue Force",
         "price": "$15.99",
@@ -171,6 +188,7 @@
         "details": "Perfect for firefighting missions in small spaces."
       },
       {
+        "id": 18,
         "picture": "https://i.ibb.co/r5mmSFS/yellow.jpg",
         "name": "Emergency Responder",
         "price": "$16.99",
@@ -180,6 +198,7 @@
         "details": "Be the hero of the day with this mini fire truck toy."
       },
       {
+        "id": 19,
         "picture": "https://i.ibb.co/r7zc1QB/blue.jpg",
         "name": "Rapid Response",
         "price": "$19.99",
@@ -189,6 +208,7 @@
         "details": "Quickly respond to emergencies with this fast fire truck toy."
       },
       {
+        "id": 20,
         "picture": "https://i.ibb.co/rx6tmkr/green.jpg",
         "name": "Firefighter's Favorite",
         "price": "$21.99",
@@ -203,6 +223,7 @@
     "title": "Mini Police Cars",
     "toys": [
       {
+        "id": 21,
         "picture": "https://i.ibb.co/ccH3tNK/blue.jpg",
         "name": "Police Pursuit",
         "price": "$17.99",
@@ -212,6 +233,7 @@
         "details": "A mini police car toy for chasing down the bad guys."
       },
       {
+        "id": 22,
         "picture": "https://i.ibb.co/Lnd2PPF/white.jpg",
         "name": "Patrol Cruiser",
         "price": "$14.99",
@@ -221,6 +243,7 @@
         "details": "Keep the streets safe with this mini police car toy."
       },
       {
+        "id": 23,
         "picture": "https://i.ibb.co/NZ6nh5s/black.jpg",
         "name": "Traffic Enforcer",
         "price": "$19.99",
@@ -230,6 +253,7 @@
         "details": "Control the flow of toy car traffic with this police car."
       },
       {
+        "id": 24,
         "picture": "https://i.ibb.co/bKVw7F7/gray.jpg",
         "name": "Undercover Agent",
         "price": "$22.99",
@@ -239,6 +263,7 @@
         "details": "Sneakily catch the toy car criminals with this undercover police car."
       },
       {
+        "id": 25,
         "picture": "https://i.ibb.co/NC97hRG/silver.jpg",
         "name": "High-Speed Interceptor",
         "price": "$24.99",

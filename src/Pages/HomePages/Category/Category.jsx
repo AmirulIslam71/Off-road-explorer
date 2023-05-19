@@ -14,6 +14,19 @@ const Category = () => {
   }, []);
   return (
     <div className="container mx-auto my-8">
+      <div className="text-center space-y-3 py-2">
+        <h1 className="italic lg:text-2xl text-xl font-bold text-amber-900">
+          Welcome toys cars categories
+        </h1>
+        <h1 className="uppercase font-serif font-extrabold lg:text-5xl text-red-800">
+          For kids Entertainment
+        </h1>
+        <p className="w-3/4 mx-auto text-sm text-green-950">
+          Discover endless fun and adventure with our incredible selection of
+          toy cars, specially designed for children to ignite their imagination
+          and create exciting playtime memories.
+        </p>
+      </div>
       <Tabs>
         <TabList>
           {categoryToys.map((category) => (
