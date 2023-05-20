@@ -29,12 +29,12 @@ const Category = () => {
       </div>
       <Tabs>
         <TabList>
-          {categoryToys.map((category) => (
+          {categoryToys.slice(0, 3).map((category) => (
             <Tab key={category.title}>{category.title}</Tab>
           ))}
         </TabList>
 
-        {categoryToys.map((category) => (
+        {categoryToys.slice(0, 3).map((category) => (
           <TabPanel key={category.title}>
             <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {category.toys.slice(0, 3).map((toy, index) => (
