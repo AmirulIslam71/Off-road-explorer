@@ -2,6 +2,19 @@ const Footer = () => {
   return (
     <footer className="footer p-10 bg-base-200 text-base-content">
       <div>
+        <img
+          src="https://cdn.cdnlogo.com/logos/f/61/ford-4x4-off-road.svg"
+          alt=""
+          className="h-20 w-full  border border-red-400 p-2"
+        />
+        <a className="">
+          Discover useful tips and <br /> strategies for managing and organizing{" "}
+          <br />
+          toys to create a clutter-free and <br /> engaging environment for
+          children
+        </a>
+      </div>
+      <div>
         <span className="footer-title">Services</span>
         <a className="link link-hover">Branding</a>
         <a className="link link-hover">Design</a>

@@ -2,9 +2,18 @@ import { useEffect, useState } from "react";
 import "react-tabs/style/react-tabs.css";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import SingleCategory from "../SingleCategory/SingleCategory";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Category = () => {
   const [categoryToys, setCategoryToys] = useState([]);
+  useEffect(() => {
+    AOS.init();
+    return () => {
+      AOS.refresh();
+    };
+  }, []);
+
   useEffect(() => {
     fetch("https://off-road-server.vercel.app/toys")
       .then((res) => res.json())
@@ -28,21 +37,25 @@ const Category = () => {
         </p>
       </div>
       <Tabs>
-        <TabList>
-          {categoryToys.slice(0, 3).map((category) => (
-            <Tab key={category.title}>{category.title}</Tab>
-          ))}
-        </TabList>
+        <div className="text-center lg:mt-4  bg-gradient-to-t from-slate-700 to-slate-950 text-red-500 lg:text-2xl rounded-lg">
+          <TabList>
+            {categoryToys.slice(0, 3).map((category) => (
+              <Tab key={category.title}>{category.title}</Tab>
+            ))}
+          </TabList>
+        </div>
 
-        {categoryToys.slice(0, 3).map((category) => (
-          <TabPanel key={category.title}>
-            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {category.toys.slice(0, 3).map((toy, index) => (
-                <SingleCategory key={index} toy={toy}></SingleCategory>
-              ))}
-            </div>
-          </TabPanel>
-        ))}
+        <div data-aos="zoom-in">
+          {categoryToys.slice(0, 3).map((category) => (
+            <TabPanel key={category.title}>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+                {category.toys.slice(0, 2).map((toy, index) => (
+                  <SingleCategory key={index} toy={toy}></SingleCategory>
+                ))}
+              </div>
+            </TabPanel>
+          ))}
+        </div>
       </Tabs>
     </div>
   );

@@ -41,7 +41,10 @@ const Navbar = () => {
             <NavbarMenu></NavbarMenu>
           </ul>
         </div>
-        <a className="btn btn-ghost lg:text-2xl lg:uppercase lg:font-serif text-amber-600">
+        <a
+          className="btn btn-ghost lg:text-2xl lg:uppercase lg:font-serif text-amber-600"
+          data-aos="fade-right"
+        >
           Off Road Explorer
         </a>
       </div>

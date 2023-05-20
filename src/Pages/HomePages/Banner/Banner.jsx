@@ -1,23 +1,34 @@
 import Carousel from "./Carousel";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const Banner = () => {
+  useEffect(() => {
+    AOS.init();
+    return () => {
+      AOS.refresh();
+    };
+  }, []);
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 bg-gradient-to-r from-[#786117] to-[#362b07] h-full px-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 bg-gradient-to-r from-gray-800 to-[#786117] h-full px-8">
       <div className="container mx-auto">
-        <div className="relative h-3/4">
+        <div className="relative h-3/4 py-4" data-aos="fade-right">
           <Carousel></Carousel>
-          <div className="absolute top-0 bottom-0 w-full bg-gradient-to-r from-transparent to-gray-50 text-center">
-            <h1 className="lg:text-4xl text-xl font-bold text-black lg:mb-4 animate-fadeIn">
-              Welcome to our off road explorer
-            </h1>
-            <p className="text-lg text-black animate-slideInRight">
-              Explore our amazing collection of products
-            </p>
-          </div>
         </div>
       </div>
-      <div className="text-center font-serif text-white lg:mt-10 mt-4 lg:space-y-3 space-x-1">
-        <p className="lg:text-2xl font-bold italic">New Collections</p>
+      <div
+        className="text-center font-serif text-white lg:mt-10 mt-4 lg:space-y-3 space-x-1"
+        data-aos="fade-left"
+      >
+        <p
+          className="lg:text-2xl font-bold italic"
+          data-aos="fade-left"
+          data-aos-delay="500"
+        >
+          New Collections
+        </p>
         <h2 className="lg:text-6xl md:text-4xl text-3xl text-red-500">
           For kids
         </h2>
