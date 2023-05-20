@@ -6,7 +6,7 @@ import SingleCategory from "../SingleCategory/SingleCategory";
 const Category = () => {
   const [categoryToys, setCategoryToys] = useState([]);
   useEffect(() => {
-    fetch("toys.json")
+    fetch("https://off-road-server.vercel.app/toys")
       .then((res) => res.json())
       .then((data) => {
         setCategoryToys(data);

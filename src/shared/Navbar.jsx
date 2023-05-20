@@ -1,7 +1,19 @@
 import { NavLink } from "react-router-dom";
 import NavbarMenu from "./NavbarMenu";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="navbar bg-base-100 container">
       <div className="navbar-start">
@@ -40,17 +52,34 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         <div className="bg-amber-600 divide-x-4 lg:px-5 md:px-2 rounded-lg lg:space-x-5">
-          <NavLink
-            to="/login"
-            style={({ isActive, isPending }) => {
-              return {
-                fontWeight: isActive ? "bold" : "",
-                color: isPending ? "red" : "black",
-              };
-            }}
-          >
-            Login
-          </NavLink>
+          {user ? (
+            <button onClick={handleLogOut}>
+              <NavLink
+                to="/"
+                style={({ isActive, isPending }) => {
+                  return {
+                    fontWeight: isActive ? "" : "",
+                    color: isPending ? "red" : "black",
+                  };
+                }}
+              >
+                Logout
+              </NavLink>
+            </button>
+          ) : (
+            <NavLink
+              to="/login"
+              style={({ isActive, isPending }) => {
+                return {
+                  fontWeight: isActive ? "bold" : "",
+                  color: isPending ? "red" : "black",
+                };
+              }}
+            >
+              Login
+            </NavLink>
+          )}
+
           <NavLink
             className="lg:pl-3"
             to="/register"
@@ -65,16 +94,28 @@ const Navbar = () => {
           </NavLink>
         </div>
         <div className="lg:pl-4 flex">
-          <div className="avatar online">
-            <div className="w-7 rounded-full">
-              <img src="https://i.ibb.co/XYqXdQc/avator.jpg" />
+          {user ? (
+            <div
+              className="tooltip tooltip-bottom"
+              data-tip={user?.displayName || user?.email}
+            >
+              <div className="avatar online">
+                <div className="w-7 rounded-full">
+                  {user.photoURL ? (
+                    <img src={user?.photoURL} />
+                  ) : (
+                    <img src="https://i.ibb.co/XYqXdQc/avator.jpg" />
+                  )}
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="avatar offline">
-            <div className="w-7 rounded-full">
-              <img src="https://i.ibb.co/XYqXdQc/avator.jpg" />
+          ) : (
+            <div className="avatar offline">
+              <div className="w-7 rounded-full">
+                <img src="https://i.ibb.co/XYqXdQc/avator.jpg" />
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>

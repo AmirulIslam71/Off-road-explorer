@@ -1,22 +1,50 @@
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
+  const { signIn } = useContext(AuthContext);
+  const [error, setError] = useState("");
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    if ((email, password)) {
+      signIn(email, password)
+        .then((data) => {
+          console.log(data);
+          Swal.fire({
+            icon: "success",
+            title: "success",
+            text: "SignIn successfully",
+          });
+          setError("");
+        })
+        .catch((error) => {
+          setError(error.message);
+        });
+    }
+  };
+
   return (
     <div className="hero min-h-screen bg-slate-700">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center">
+      <div className="hero-content flex-col lg:flex-row">
+        <div className="text-center h-full w-full">
           <h1 className="lg:text-3xl text-xl font-bold mb-2 text-white">
             LOG IN TO YOUR ACCOUNT
           </h1>
           <img
-            src="https://i.ibb.co/X4YzhGk/websecurity.jpg"
+            src="https://t4.ftcdn.net/jpg/04/60/71/01/360_F_460710131_YkD6NsivdyYsHupNvO3Y8MPEwxTAhORh.jpg"
             alt=""
-            className="h-full w-full"
+            className="h-full"
           />
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body">
-            <form>
+            <form onSubmit={handleLogin}>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -41,8 +69,11 @@ const Login = () => {
                   required
                 />
                 <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
+                  <a
+                    href="#"
+                    className="label-text-alt link link-hover text-red-500"
+                  >
+                    {error}
                   </a>
                 </label>
               </div>
