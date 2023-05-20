@@ -1,11 +1,15 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, googleLogin, githubLogin } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location.state?.from?.pathname || "/";
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -15,18 +19,41 @@ const Login = () => {
     if ((email, password)) {
       signIn(email, password)
         .then((data) => {
-          console.log(data);
+          console.log(data.user);
           Swal.fire({
             icon: "success",
             title: "success",
             text: "SignIn successfully",
           });
+          navigate(from, { replace: true });
           setError("");
         })
         .catch((error) => {
           setError(error.message);
         });
     }
+  };
+
+  const handleGoogle = () => {
+    googleLogin()
+      .then((data) => {
+        console.log(data.user);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleGithub = () => {
+    githubLogin()
+      .then((data) => {
+        console.log(data.user);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -92,11 +119,17 @@ const Login = () => {
               </p>
               <div className="divider divide-red-500">OR</div>
               <div>
-                <button className="btn bg-amber-900 w-full mb-4">
+                <button
+                  onClick={handleGoogle}
+                  className="btn bg-amber-900 w-full mb-4"
+                >
                   Login In With Google
                 </button>
                 <br />
-                <button className="btn bg-amber-900 w-full">
+                <button
+                  onClick={handleGithub}
+                  className="btn bg-amber-900 w-full"
+                >
                   Login In With Github
                 </button>
               </div>

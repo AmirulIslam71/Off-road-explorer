@@ -1,12 +1,17 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, googleLogin, githubLogin } = useContext(AuthContext);
   const [validation, setValidation] = useState("");
   const [error, setError] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location.state?.from?.pathname || "/";
+
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -31,9 +36,32 @@ const Register = () => {
     createUser(email, password)
       .then((data) => {
         console.log(data);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setError(error.message);
+      });
+  };
+
+  const handleGoogle = () => {
+    googleLogin()
+      .then((data) => {
+        console.log(data);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleGithub = () => {
+    githubLogin()
+      .then((data) => {
+        console.log(data);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 
@@ -112,17 +140,23 @@ const Register = () => {
               </div>
               <p className="py-2">
                 Have an account? Comes to Login{" "}
-                <Link to="/register" className="text-red-500">
+                <Link to="/login" className="text-red-500">
                   Here
                 </Link>
               </p>
               <div className="divider divide-red-500">OR</div>
               <div>
-                <button className="btn bg-amber-900 w-full mb-4">
+                <button
+                  onClick={handleGoogle}
+                  className="btn bg-amber-900 w-full mb-4"
+                >
                   Login In With Google
                 </button>
                 <br />
-                <button className="btn bg-amber-900 w-full">
+                <button
+                  onClick={handleGithub}
+                  className="btn bg-amber-900 w-full"
+                >
                   Login In With Github
                 </button>
               </div>
