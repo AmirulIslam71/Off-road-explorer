@@ -7,7 +7,7 @@ const MyToys = () => {
   const [toys, setToys] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myToys/${user?.email}`)
+    fetch(`http://localhost:5000/allToys/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
@@ -36,6 +36,7 @@ const MyToys = () => {
           .then((res) => res.json)
           .then((data) => {
             console.log(data);
+            setToys((prevToys) => prevToys.filter((toy) => toy._id !== id));
             Swal.fire("Deleted!", "Your file has been deleted.", "success");
           });
       }
