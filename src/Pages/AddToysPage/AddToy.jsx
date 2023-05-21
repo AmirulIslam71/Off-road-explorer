@@ -7,8 +7,6 @@ const AddToy = () => {
 
   const [pictureUrl, setPictureUrl] = useState("");
   const [name, setName] = useState("");
-  const [sellerName, setSellerName] = useState("");
-  const [sellerEmail, setSellerEmail] = useState("");
   const [subCategory, setSubCategory] = useState("");
   const [price, setPrice] = useState("");
   const [rating, setRating] = useState("");
@@ -17,6 +15,8 @@ const AddToy = () => {
 
   const handleAddToy = (event) => {
     event.preventDefault();
+    const sellerName = user?.displayName;
+    const sellerEmail = user?.email;
 
     const newToy = {
       title: name,
@@ -51,15 +51,13 @@ const AddToy = () => {
         }
       });
 
-    // setPictureUrl("");
-    // setName("");
-    // setSellerName("");
-    // setSellerEmail("");
-    // setSubCategory("");
-    // setPrice("");
-    // setRating("");
-    // setQuantity("");
-    // setDescription("");
+    setPictureUrl("");
+    setName("");
+    setSubCategory("");
+    setPrice("");
+    setRating("");
+    setQuantity("");
+    setDescription("");
   };
 
   return (
@@ -105,7 +103,7 @@ const AddToy = () => {
                     type="text"
                     id="sellerName"
                     defaultValue={user?.displayName}
-                    onChange={(e) => setSellerName(e.target.defaultValue)}
+                    // onChange={(e) => setSellerName(e.target.defaultValue)}
                     className="mt-1 p-2 border rounded-md w-full"
                   />
                 </div>
@@ -120,7 +118,7 @@ const AddToy = () => {
                     type="email"
                     id="sellerEmail"
                     defaultValue={user?.email}
-                    onChange={(e) => setSellerEmail(e.target.value)}
+                    // onChange={(e) => setSellerEmail(e.target.value)}
                     className="mt-1 p-2 border rounded-md w-full"
                   />
                 </div>
