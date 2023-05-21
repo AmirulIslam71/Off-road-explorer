@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 const Register = () => {
   const { createUser, googleLogin, githubLogin } = useContext(AuthContext);
@@ -9,6 +10,7 @@ const Register = () => {
   const [error, setError] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
+  useTitle("register");
 
   const from = location.state?.from?.pathname || "/";
 
@@ -17,6 +19,7 @@ const Register = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
+
     if (
       !/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{6,}$/.test(
         password

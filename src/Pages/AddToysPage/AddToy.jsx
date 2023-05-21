@@ -1,9 +1,11 @@
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 const AddToy = () => {
   const { user } = useContext(AuthContext);
+  useTitle("AddToy");
 
   const [pictureUrl, setPictureUrl] = useState("");
   const [name, setName] = useState("");

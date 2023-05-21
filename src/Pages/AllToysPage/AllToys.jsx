@@ -1,12 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
+import useTitle from "../../hooks/useTitle";
 
 const AllToys = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [toys, setToys] = useState([]);
   const [filteredToys, setFilteredToys] = useState([]);
+  useTitle("AllToys");
 
   useEffect(() => {
     fetch("http://localhost:5000/allToys")
