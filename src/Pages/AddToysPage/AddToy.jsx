@@ -38,7 +38,7 @@ const AddToy = () => {
     };
     console.log(newToy);
     // add toys in mongodb server
-    fetch("http://localhost:5000/toys", {
+    fetch("https://off-road-server.vercel.app/toys", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(newToy),

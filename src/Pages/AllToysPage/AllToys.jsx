@@ -106,8 +106,8 @@ const AllToys = () => {
             onChange={handleSortChange}
             value={sortOrder}
           >
-            <option value="asc">Sort: Low to High</option>
-            <option value="desc">Sort: High to Low</option>
+            <option value="asc">Low to High</option>
+            <option value="desc">High to Low</option>
           </select>
         </div>
         <table className="table w-full">
