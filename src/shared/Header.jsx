@@ -30,7 +30,7 @@ const Header = () => {
             />
           </div>
           <div className="flex items-center">
-            <SearchOptions></SearchOptions>
+            {/* <SearchOptions></SearchOptions> */}
           </div>
           <div className="text-white">
             <div className="flex items-center">

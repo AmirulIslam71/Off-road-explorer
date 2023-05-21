@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const AddToy = () => {
+  const { user } = useContext(AuthContext);
+
   const [pictureUrl, setPictureUrl] = useState("");
   const [name, setName] = useState("");
   const [sellerName, setSellerName] = useState("");
@@ -80,7 +83,7 @@ const AddToy = () => {
               <div>
                 <div className="mb-4">
                   <label htmlFor="name" className="block text-sm font-medium">
-                    Name
+                    Product Name
                   </label>
                   <input
                     type="text"
@@ -101,8 +104,8 @@ const AddToy = () => {
                   <input
                     type="text"
                     id="sellerName"
-                    value={sellerName}
-                    onChange={(e) => setSellerName(e.target.value)}
+                    defaultValue={user?.displayName}
+                    onChange={(e) => setSellerName(e.target.defaultValue)}
                     className="mt-1 p-2 border rounded-md w-full"
                   />
                 </div>
@@ -116,7 +119,7 @@ const AddToy = () => {
                   <input
                     type="email"
                     id="sellerEmail"
-                    value={sellerEmail}
+                    defaultValue={user?.email}
                     onChange={(e) => setSellerEmail(e.target.value)}
                     className="mt-1 p-2 border rounded-md w-full"
                   />
