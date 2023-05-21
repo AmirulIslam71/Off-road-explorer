@@ -2,16 +2,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import useTitle from "../../hooks/useTitle";
+import { Link } from "react-router-dom";
 
 const AllToys = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [toys, setToys] = useState([]);
   const [filteredToys, setFilteredToys] = useState([]);
+  const [sortOrder, setSortOrder] = useState("asc"); // Default sort order is ascending
   useTitle("AllToys");
 
   useEffect(() => {
-    fetch("http://localhost:5000/allToys")
+    fetch("https://off-road-server.vercel.app/allToys")
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
@@ -38,13 +40,31 @@ const AllToys = () => {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:5000/toySearch/${searchQuery}`)
+    fetch(`https://off-road-server.vercel.app/toySearch/${searchQuery}`)
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
         setFilteredToys(data);
       });
   };
+
+  const handleSortChange = (e) => {
+    setSortOrder(e.target.value);
+    sortToys(filteredToys, e.target.value);
+  };
+
+  const sortToys = (toys, order) => {
+    const sortedToys = [...toys];
+    sortedToys.sort((a, b) => {
+      if (order === "asc") {
+        return a.toys[0].price - b.toys[0].price;
+      } else {
+        return b.toys[0].price - a.toys[0].price;
+      }
+    });
+    setFilteredToys(sortedToys);
+  };
+
   return (
     <div className="bg-gradient-to-r from-black to-gray-400">
       <div className="container mx-auto pb-4 overflow-x-auto w-full">
@@ -81,10 +101,13 @@ const AllToys = () => {
               </button>
             </form>
           </div>
-          <select className="bg-orange-400 rounded-lg text-xl p-2">
-            <option>sorting</option>
-            <option>high price</option>
-            <option>low price</option>
+          <select
+            className="bg-orange-400 rounded-lg text-xl p-2"
+            onChange={handleSortChange}
+            value={sortOrder}
+          >
+            <option value="asc">Sort: Low to High</option>
+            <option value="desc">Sort: High to Low</option>
           </select>
         </div>
         <table className="table w-full">
@@ -102,7 +125,7 @@ const AllToys = () => {
           </thead>
           <tbody>
             {/* Render toy data */}
-            {toys.map((category) =>
+            {filteredToys.map((category) =>
               category.toys.map((toy, index) => (
                 <tr key={index}>
                   <td>
@@ -126,8 +149,10 @@ const AllToys = () => {
                   <td>{toy.quantity}</td>
                   <td>{toy.rating}</td>
                   <td>
-                    <button className="btn btn-secondary  btn-xs">
-                      details
+                    <button className="btn btn-secondary btn-xs">
+                      <Link to={`/details/${toy.id || index}`}>
+                        View Details
+                      </Link>
                     </button>
                   </td>
                 </tr>

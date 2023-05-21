@@ -9,7 +9,7 @@ const MyToys = () => {
   useTitle("MyToys");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allToys/${user?.email}`)
+    fetch(`https://off-road-server.vercel.app/myToys/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setToys(data);

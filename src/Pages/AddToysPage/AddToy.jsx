@@ -10,6 +10,8 @@ const AddToy = () => {
   const [pictureUrl, setPictureUrl] = useState("");
   const [name, setName] = useState("");
   const [subCategory, setSubCategory] = useState("");
+  const [sellerName, setSellerName] = useState("");
+  // const [subCategory, setSubCategory] = useState("");
   const [price, setPrice] = useState("");
   const [rating, setRating] = useState("");
   const [quantity, setQuantity] = useState("");
@@ -17,7 +19,6 @@ const AddToy = () => {
 
   const handleAddToy = (event) => {
     event.preventDefault();
-    const sellerName = user?.displayName;
     const sellerEmail = user?.email;
 
     const newToy = {
@@ -104,8 +105,8 @@ const AddToy = () => {
                   <input
                     type="text"
                     id="sellerName"
-                    defaultValue={user?.displayName}
-                    // onChange={(e) => setSellerName(e.target.defaultValue)}
+                    value={sellerName}
+                    onChange={(e) => setSellerName(e.target.value)}
                     className="mt-1 p-2 border rounded-md w-full"
                   />
                 </div>

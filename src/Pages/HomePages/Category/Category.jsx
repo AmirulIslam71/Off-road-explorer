@@ -39,7 +39,7 @@ const Category = () => {
       <Tabs>
         <div className="text-center lg:mt-4  bg-gradient-to-t from-slate-700 to-slate-950 text-red-500 lg:text-2xl rounded-lg">
           <TabList>
-            {categoryToys.map((category) => (
+            {categoryToys.slice(0, 3).map((category) => (
               <Tab key={category.title}>{category.title}</Tab>
             ))}
           </TabList>
