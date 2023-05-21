@@ -7,7 +7,7 @@ const Details = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allToys`)
+    fetch("https://off-road-server.vercel.app/allToys")
       .then((res) => res.json())
       .then((data) => {
         // Find the toy with the matching ID
