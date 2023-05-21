@@ -14,11 +14,6 @@ const MyToys = () => {
       });
   }, [user]);
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here
-  };
-
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -41,6 +36,44 @@ const MyToys = () => {
           });
       }
     });
+  };
+
+  const handleUpdateToy = (event, _id) => {
+    event.preventDefault();
+    const form = event.target;
+    const toyTitle = form.toyTitle.value;
+    const toyName = form.toyName.value;
+    const price = form.price.value;
+    const quantity = form.quantity.value;
+    const details = form.details.value;
+    const updateToy = {
+      title: toyTitle,
+      toys: [
+        {
+          name: toyName,
+          price,
+          quantity,
+          details,
+        },
+      ],
+    };
+    console.log(updateToy);
+
+    fetch(`http://localhost:5000/allToys/${_id}`, {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(updateToy),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            icon: "success",
+            title: "Updated toy successfully",
+          });
+        }
+      });
   };
 
   return (
@@ -111,7 +144,11 @@ const MyToys = () => {
                       <div className="modal modal-bottom sm:modal-middle">
                         <div className="modal-box">
                           <div className="w-full mx-auto py-4">
-                            <form onSubmit={handleFormSubmit}>
+                            <form
+                              onSubmit={(event) =>
+                                handleUpdateToy(event, category._id)
+                              }
+                            >
                               {/* Form fields */}
                               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
                                 <div>
@@ -124,6 +161,8 @@ const MyToys = () => {
                                     </label>
                                     <input
                                       type="text"
+                                      name="toyTitle"
+                                      defaultValue={category?.title}
                                       id={`name-${index}`}
                                       className="mt-1 p-2 border rounded-md w-full"
                                       required
@@ -139,6 +178,8 @@ const MyToys = () => {
                                     </label>
                                     <input
                                       type="text"
+                                      name="toyName"
+                                      defaultValue={toy?.name}
                                       id={`subCategory-${index}`}
                                       className="mt-1 p-2 border rounded-md w-full"
                                       required
@@ -155,6 +196,8 @@ const MyToys = () => {
                                     </label>
                                     <input
                                       type="text"
+                                      name="price"
+                                      defaultValue={toy?.price}
                                       id={`price-${index}`}
                                       className="mt-1 p-2 border rounded-md w-full"
                                       required
@@ -170,6 +213,8 @@ const MyToys = () => {
                                     </label>
                                     <input
                                       type="number"
+                                      name="quantity"
+                                      defaultValue={toy?.quantity}
                                       id={`quantity-${index}`}
                                       className="mt-1 p-2 border rounded-md w-full"
                                       required
@@ -187,8 +232,10 @@ const MyToys = () => {
                                 <textarea
                                   id={`description-${index}`}
                                   className="mt-1 p-2 border rounded-md w-full"
+                                  name="details"
                                   rows="4"
                                   required
+                                  defaultValue={toy?.details}
                                 ></textarea>
                               </div>
                               <div className="flex justify-end">
@@ -196,7 +243,7 @@ const MyToys = () => {
                                   type="submit"
                                   className="px-4 py-2 bg-blue-500 rounded-md hover:bg-blue-400 w-full mx-auto font-bold uppercase"
                                 >
-                                  Add Toy
+                                  Edit Toy
                                 </button>
                               </div>
                             </form>
